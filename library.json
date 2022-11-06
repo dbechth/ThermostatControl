@@ -1,0 +1,16 @@
+{
+    "name": "ThermostatControl",
+    "version": "0.0.2",
+    "description": "ThermostatControl Library for Arduino, ESP8266 & EPS32",
+    "keywords": "Thermostat, Control",
+    "authors":
+    [
+      {
+        "name": "Douglas Bechthold",
+        "email": "dbechth@gmail.com"
+      }
+    ],
+    "license": "MIT",
+    "frameworks": "*",
+    "platforms": "*"
+  }
