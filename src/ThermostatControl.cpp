@@ -1,6 +1,5 @@
 #include "ThermostatControl.h"
 #include "ThermostatIndex.h"
-#include "ThermostatIndexNew.h"
 
 #define Task5M  (60000 * 5)
 
@@ -8,11 +7,6 @@
 void IDX()
 {
     ThermostatControl.webserver->send(200, "text/html", ThermostatIndex);
-}
-
-void IDXnew()
-{
-    ThermostatControl.webserver->send(200, "text/html", ThermostatIndexNew);
 }
 
 void getSetpoint()
@@ -50,7 +44,6 @@ void ThermostatControlClass::init(float sp, float hys, Mode md, ESP8266WebServer
    output = cmdOff;
    State = ThermostatControlClass::tshsHeatOff;
    ThermostatControl.setpointChanged = false;
-   //webserver->on("/", IDXnew);
    webserver->on("/thermostat", IDX);
    webserver->on("/setSetpoint", setSetpoint);
    webserver->on("/getTemperature", getTemperature);
