@@ -35,7 +35,7 @@ void getTemperature()
     ThermostatControl.webserver->send(200, "text/plain", String(ThermostatControl.temperature));
 }
 
-void ThermostatControlClass::init(float sp, float hys, Mode md, ESP8266WebServer *server)
+void ThermostatControlClass::init(float sp, float hys, Mode md, WebServer *server)
 {
    webserver = server;
    hysteresis = hys;

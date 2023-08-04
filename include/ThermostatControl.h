@@ -8,8 +8,12 @@
 #else
 	#include "WProgram.h"
 #endif
-#include <ESP8266WebServer.h>
 
+#ifdef ARDUINO_ARCH_ESP32
+    #include <WebServer.h>
+#else
+    #include <ESP8266WebServer.h>
+#endif
 class ThermostatControlClass
 {
  protected:
@@ -40,7 +44,7 @@ class ThermostatControlClass
         cmdHeatLow
     };
 
-   void init(float sp, float hys, Mode md, ESP8266WebServer* server);
+   void init(float sp, float hys, Mode md, WebServer* server);
    void task();
    float hysteresis;
    float setpoint;
@@ -49,7 +53,11 @@ class ThermostatControlClass
    OutputCmd output;
    float etaSetpoint;
    float temperatureRate;
-   ESP8266WebServer* webserver;
+    #ifdef ARDUINO_ARCH_ESP32
+        WebServer* webserver;//this should probably be a typedef
+    #else
+        ESP8266WebServer* webserver;
+    #endif
    boolean setpointChanged;
    
 };
