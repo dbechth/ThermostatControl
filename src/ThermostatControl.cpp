@@ -35,7 +35,11 @@ void getTemperature()
     ThermostatControl.webserver->send(200, "text/plain", String(ThermostatControl.temperature));
 }
 
+#ifdef ARDUINO_ARCH_ESP32
 void ThermostatControlClass::init(float sp, float hys, Mode md, WebServer *server)
+#else
+void ThermostatControlClass::init(float sp, float hys, Mode md, ESP8266WebServer *server)
+#endif
 {
    webserver = server;
    hysteresis = hys;

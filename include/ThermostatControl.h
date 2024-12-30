@@ -43,8 +43,13 @@ class ThermostatControlClass
         cmdCool,
         cmdHeatLow
     };
-
-   void init(float sp, float hys, Mode md, WebServer* server);
+    
+    #ifdef ARDUINO_ARCH_ESP32
+    void init(float sp, float hys, Mode md, WebServer* server);
+    #else
+    void init(float sp, float hys, Mode md, ESP8266WebServer* server);
+    #endif
+   
    void task();
    float hysteresis;
    float setpoint;
